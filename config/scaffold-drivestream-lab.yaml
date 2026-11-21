@@ -1,0 +1,27 @@
+apiVersion: launchpad/v1
+kind: ScaffoldConfig
+
+org: drivestream-lab
+
+meta:
+  enabled: true
+  engine: cookiecutter
+  template: gh:drivestream-lab/tenant-meta-foundation
+  ref: v0.1.0
+  context:
+    meta_repo: mandate-sandbox-meta
+    client_id: mandate-sandbox
+    display_name: Mandate sandbox
+    org: drivestream-lab
+    forge_type: github
+
+repos:
+  mandate-sandbox-svc:
+    enabled: true
+    engine: cookiecutter
+    template: gh:drivestream-lab/python-fastapi-foundation
+    ref: v0.3.5
+    context:
+      service_name: mandate-sandbox-svc
+      service_description: Toy service for proving Mandate (one in-memory /items resource)
+      default_port: "8000"

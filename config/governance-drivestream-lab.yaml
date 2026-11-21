@@ -1,0 +1,49 @@
+apiVersion: launchpad/v1
+kind: GovernanceConfig
+
+# A governed programme (PL-13, PL-14). require_pr_reviews is 0; the required
+# checks mandate/gate-decision and mandate-verify, and the App-only merge
+# restriction, are added by hand after init-client (Launchpad 0.5.39 does not
+# automate rulesets). See RUNBOOK.md step 6.
+
+org: drivestream-lab
+
+stack_profiles:
+  meta-pm: Programme management meta repo
+  python-backend: Python services under python-services-rules
+
+teams:
+  - name: mandate-pm
+    description: Mandate programme management
+    privacy: closed
+  - name: mandate-pe
+    description: Mandate principal engineering
+    privacy: closed
+  - name: mandate-release-managers
+    description: L0 holders of the production release gate (develop into main)
+    privacy: closed
+  - name: mandate-sandbox-devs
+    description: Humans who may inspect the sandbox; agents act through Paperclip
+    privacy: closed
+
+repos:
+  mandate-sandbox-meta:
+    stack: meta-pm
+    teams: [mandate-pm, mandate-pe, mandate-release-managers]
+    visibility: public
+    description: Meta repo for the Mandate sandbox programme
+
+  mandate-sandbox-svc:
+    stack: python-backend
+    teams: [mandate-sandbox-devs, mandate-pe, mandate-release-managers]
+    visibility: public
+    description: Toy service the sandbox agents build (one in-memory /items resource)
+
+policy:
+  default_branch: main
+  integration_branch: develop
+  require_pr_reviews: 0
+  dismiss_stale_reviews: true
+
+project_board:
+  enabled: false

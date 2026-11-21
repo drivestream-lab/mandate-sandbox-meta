@@ -1,0 +1,11 @@
+apiVersion: launchpad/v1
+kind: Programme
+
+# mandate-sandbox: the throwaway programme Mandate is proven on before Conduit.
+# Governed by Mandate (PL-14): no required human review, only Mandate's App merges.
+programme: MANDATE-SANDBOX
+programme_slug: mandate-sandbox
+org: drivestream-lab
+meta_repo: mandate-sandbox-meta
+forge:
+  provider: github

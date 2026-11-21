@@ -1,0 +1,23 @@
+apiVersion: launchpad/v1
+kind: ServiceCatalog
+
+org: drivestream-lab
+
+services:
+  mandate-sandbox-meta:
+    stack: meta-pm
+    description: Meta repo for the Mandate sandbox programme
+    status: live
+    teams: [mandate-pm, mandate-pe]
+    branch_code: SANDBOX
+    links:
+      repo: https://github.com/drivestream-lab/mandate-sandbox-meta
+
+  mandate-sandbox-svc:
+    stack: python-backend
+    description: Toy service the sandbox agents build
+    status: planned
+    teams: [mandate-sandbox-devs, mandate-pe]
+    branch_code: SANDBOX
+    links:
+      repo: https://github.com/drivestream-lab/mandate-sandbox-svc

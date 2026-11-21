@@ -1,0 +1,36 @@
+apiVersion: launchpad/v1
+kind: HarnessConfig
+
+delivery_contract: sdd-delivery/v2   # bump to v3 with the Mandate programme
+delivery_roles:
+  engineering-gate: mandate-pe
+
+org: drivestream-lab
+
+profiles:
+  meta-pm:
+    skills:
+      - repo: prayog-skills
+        ref: v0.5.6
+    skill_runtimes:
+      - .agents/skills
+      - .claude/skills
+    owners:
+      team: mandate-pm
+      layout: meta
+
+  python-backend:
+    constitution:
+      repo: python-services-rules
+      ref: v0.5.12
+    skills:
+      - repo: prayog-skills
+        ref: v0.5.6
+    skill_runtimes:
+      - .agents/skills
+      - .claude/skills
+    owners:
+      team: mandate-sandbox-devs
+      layout: app_src
+
+repos: {}
